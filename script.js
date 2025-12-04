@@ -159,43 +159,43 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Babylon',
             author: 'Dir. Damien Chazelle',
             year: '2022',
-            synopsis: 'Una épica historia ambientada en los años dorados de Hollywood que muestra la transición del cine mudo al sonoro. La película sigue a múltiples personajes en su ascenso y caída durante una era de decadencia y exceso sin límites en los primeros días de Tinseltown.'
+            synopsis: 'An epic story set in the golden age of Hollywood that shows the transition from silent films to talkies. The film follows multiple characters in their rise and fall during an era of decadence and boundless excess in the early days of Tinseltown.'
         },
         'perfect-days': {
             image: 'assets/img/movies/perfect_days.jpeg',
             title: 'Perfect Days',
             author: 'Dir. Wim Wenders',
             year: '2023',
-            synopsis: 'Un limpiador de baños públicos en Tokio encuentra belleza y significado en su rutina diaria aparentemente simple. Una meditación contemplativa sobre la búsqueda de la felicidad en los pequeños momentos y la conexión humana en la vida moderna.'
+            synopsis: 'A public restroom cleaner in Tokyo finds beauty and meaning in his seemingly simple daily routine. A contemplative meditation on finding happiness in small moments and human connection in modern life.'
         },
         'eternal-sunshine': {
             image: 'assets/img/movies/Eterno_resplandor.jpeg',
             title: 'Eternal Sunshine of the Spotless Mind',
             author: 'Dir. Michel Gondry',
             year: '2004',
-            synopsis: 'Una pareja se somete a un procedimiento médico para borrar los recuerdos de su relación fallida. Una exploración poética y surrealista del amor, la memoria y la identidad, cuestionando si olvidar el dolor también significa perder lo que hace valiosa la experiencia humana.'
+            synopsis: 'A couple undergoes a medical procedure to erase memories of their failed relationship. A poetic and surreal exploration of love, memory, and identity, questioning whether forgetting pain also means losing what makes human experience valuable.'
         },
         // Books
         'crimen-y-castigo': {
             image: 'assets/img/books/crime_castigo.jpeg',
-            title: 'Crimen y Castigo',
-            author: 'Fiódor Dostoyevski',
+            title: 'Crime and Punishment',
+            author: 'Fyodor Dostoevsky',
             year: '1866',
-            synopsis: 'La obra maestra de Dostoyevski sigue a Raskólnikov, un estudiante empobrecido en San Petersburgo que comete un asesinato para probar su teoría de que ciertos individuos están por encima de la ley moral. Una exploración profunda de la psicología humana, la culpa, la redención y la naturaleza del bien y el mal.'
+            synopsis: 'Dostoevsky\'s masterpiece follows Raskolnikov, an impoverished student in St. Petersburg who commits a murder to prove his theory that certain individuals are above moral law. A deep exploration of human psychology, guilt, redemption, and the nature of good and evil.'
         },
         'rebelion-atlas': {
             image: 'assets/img/books/rebelion_atlas.jpeg',
-            title: 'La Rebelión de Atlas',
+            title: 'Atlas Shrugged',
             author: 'Ayn Rand',
             year: '1957',
-            synopsis: 'Una novela filosófica que presenta un mundo donde los creadores, innovadores y empresarios se declaran en huelga contra una sociedad que los explota. Una defensa del individualismo, el capitalismo y la razón, explorando las consecuencias de un mundo sin mentes creativas.'
+            synopsis: 'A philosophical novel that presents a world where creators, innovators, and entrepreneurs go on strike against a society that exploits them. A defense of individualism, capitalism, and reason, exploring the consequences of a world without creative minds.'
         },
         'east-of-eden': {
             image: 'assets/img/books/east_of_eden.jpeg',
             title: 'East of Eden',
             author: 'John Steinbeck',
             year: '1952',
-            synopsis: 'Una saga familiar épica ambientada en el Valle de Salinas, California, que reinterpreta la historia bíblica de Caín y Abel a través de dos generaciones de familias. Una exploración profunda de la bondad y la maldad, el libre albedrío y la lucha por la aceptación y el amor paterno.'
+            synopsis: 'An epic family saga set in the Salinas Valley, California, that reinterprets the biblical story of Cain and Abel through two generations of families. A deep exploration of good and evil, free will, and the struggle for acceptance and paternal love.'
         }
     };
 
