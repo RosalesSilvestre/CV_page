@@ -22,6 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Create data intelligence scripts using Python and Pyplot to visualize trends and support internal decision-making'
             ]
         },
+        'bravos-energy': {
+            logo: 'assets/img/logos/bravos_energia.png',
+            company: 'Bravos Energy',
+            role: 'Data Analyst',
+            date: 'Jan 2025 - Aug 2025',
+            details: [
+                'Working on a high-impact data project involving SQL tables with millions of rows using Polars',
+                'Extract structured insights for trading-related operations in a high-responsibility, NDA-bound environment'
+            ]
+        },
         'dxgrow': {
             logo: 'assets/img/logos/dxgrow.jpeg',
             company: 'DXgrow',
