@@ -140,5 +140,139 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
+
+    // Library data (movies and books)
+    const libraryData = {
+        // Movies
+        'babylon': {
+            image: 'assets/img/movies/Babylon.jpeg',
+            title: 'Babylon',
+            author: 'Dir. Damien Chazelle',
+            year: '2022',
+            synopsis: 'Una épica historia ambientada en los años dorados de Hollywood que muestra la transición del cine mudo al sonoro. La película sigue a múltiples personajes en su ascenso y caída durante una era de decadencia y exceso sin límites en los primeros días de Tinseltown.'
+        },
+        'perfect-days': {
+            image: 'assets/img/movies/perfect_days.jpeg',
+            title: 'Perfect Days',
+            author: 'Dir. Wim Wenders',
+            year: '2023',
+            synopsis: 'Un limpiador de baños públicos en Tokio encuentra belleza y significado en su rutina diaria aparentemente simple. Una meditación contemplativa sobre la búsqueda de la felicidad en los pequeños momentos y la conexión humana en la vida moderna.'
+        },
+        'eternal-sunshine': {
+            image: 'assets/img/movies/Eterno_resplandor.jpeg',
+            title: 'Eternal Sunshine of the Spotless Mind',
+            author: 'Dir. Michel Gondry',
+            year: '2004',
+            synopsis: 'Una pareja se somete a un procedimiento médico para borrar los recuerdos de su relación fallida. Una exploración poética y surrealista del amor, la memoria y la identidad, cuestionando si olvidar el dolor también significa perder lo que hace valiosa la experiencia humana.'
+        },
+        // Books
+        'crimen-y-castigo': {
+            image: 'assets/img/books/crime_castigo.jpeg',
+            title: 'Crimen y Castigo',
+            author: 'Fiódor Dostoyevski',
+            year: '1866',
+            synopsis: 'La obra maestra de Dostoyevski sigue a Raskólnikov, un estudiante empobrecido en San Petersburgo que comete un asesinato para probar su teoría de que ciertos individuos están por encima de la ley moral. Una exploración profunda de la psicología humana, la culpa, la redención y la naturaleza del bien y el mal.'
+        },
+        'rebelion-atlas': {
+            image: 'assets/img/books/rebelion_atlas.jpeg',
+            title: 'La Rebelión de Atlas',
+            author: 'Ayn Rand',
+            year: '1957',
+            synopsis: 'Una novela filosófica que presenta un mundo donde los creadores, innovadores y empresarios se declaran en huelga contra una sociedad que los explota. Una defensa del individualismo, el capitalismo y la razón, explorando las consecuencias de un mundo sin mentes creativas.'
+        },
+        'east-of-eden': {
+            image: 'assets/img/books/east_of_eden.jpeg',
+            title: 'East of Eden',
+            author: 'John Steinbeck',
+            year: '1952',
+            synopsis: 'Una saga familiar épica ambientada en el Valle de Salinas, California, que reinterpreta la historia bíblica de Caín y Abel a través de dos generaciones de familias. Una exploración profunda de la bondad y la maldad, el libre albedrío y la lucha por la aceptación y el amor paterno.'
+        }
+    };
+
+    // Get library modal elements
+    const libraryModal = document.getElementById('libraryModal');
+    const closeLibraryModalBtn = document.getElementById('closeLibraryModal');
+    const libraryModalImage = document.getElementById('libraryModalImage');
+    const libraryModalTitle = document.getElementById('libraryModalTitle');
+    const libraryModalAuthor = document.getElementById('libraryModalAuthor');
+    const libraryModalYear = document.getElementById('libraryModalYear');
+    const libraryModalSynopsis = document.getElementById('libraryModalSynopsis');
+
+    // Check if library modal elements exist
+    if (!libraryModal || !closeLibraryModalBtn || !libraryModalImage || !libraryModalTitle || 
+        !libraryModalAuthor || !libraryModalYear || !libraryModalSynopsis) {
+        console.error('Library modal elements not found');
+    } else {
+        // Function to open library modal
+        function openLibraryModal(itemKey) {
+            const data = libraryData[itemKey];
+            if (!data) {
+                console.error('Library item data not found for:', itemKey);
+                return;
+            }
+
+            libraryModalImage.src = data.image;
+            libraryModalImage.alt = data.title;
+            libraryModalTitle.textContent = data.title;
+            libraryModalAuthor.textContent = data.author;
+            libraryModalYear.textContent = data.year;
+            libraryModalSynopsis.textContent = data.synopsis;
+
+            // Show modal with animation
+            libraryModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close library modal
+        function closeLibraryModal() {
+            libraryModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Get all gallery items (movies and books)
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Add click event listeners to gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const itemType = item.getAttribute('data-type');
+                const itemKey = item.getAttribute('data-item');
+                
+                if (itemType && itemKey) {
+                    openLibraryModal(itemKey);
+                }
+            });
+            
+            // Make it clear it's clickable
+            item.style.cursor = 'pointer';
+        });
+
+        // Close library modal when clicking close button
+        if (closeLibraryModalBtn) {
+            closeLibraryModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeLibraryModal();
+            });
+        }
+
+        // Close library modal when clicking overlay
+        if (libraryModal) {
+            libraryModal.addEventListener('click', function(e) {
+                if (e.target === libraryModal) {
+                    closeLibraryModal();
+                }
+            });
+        }
+
+        // Close library modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && libraryModal.classList.contains('active')) {
+                closeLibraryModal();
+            }
+        });
+    }
 });
 

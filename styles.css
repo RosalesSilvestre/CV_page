@@ -606,6 +606,35 @@ section {
     margin-bottom: 0;
 }
 
+/* Library Modal Styles */
+.library-modal-content {
+    max-width: 700px;
+}
+
+.library-modal-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.library-modal-image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border: 2px solid var(--accent-subtle);
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+}
+
+.library-synopsis {
+    color: var(--accent-subtle);
+    line-height: 1.8;
+    font-size: 1rem;
+    text-align: justify;
+    margin-top: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
@@ -706,6 +735,16 @@ section {
 
     .modal-role {
         font-size: 1rem;
+    }
+
+    .library-modal-image {
+        width: 150px;
+        height: 225px;
+    }
+
+    .library-synopsis {
+        font-size: 0.9rem;
+        text-align: left;
     }
 }
 

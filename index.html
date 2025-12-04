@@ -206,13 +206,13 @@
         <div class="library-subsection">
             <h3 class="subsection-title">Cine</h3>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="movie" data-item="babylon">
                     <img src="assets/img/movies/Babylon.jpeg" alt="Babylon" class="gallery-img">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="movie" data-item="perfect-days">
                     <img src="assets/img/movies/perfect_days.jpeg" alt="Perfect Days" class="gallery-img">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="movie" data-item="eternal-sunshine">
                     <img src="assets/img/movies/Eterno_resplandor.jpeg" alt="Eternal Sunshine of the Spotless Mind" class="gallery-img">
                 </div>
             </div>
@@ -222,13 +222,13 @@
         <div class="library-subsection">
             <h3 class="subsection-title">Lectura</h3>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="book" data-item="crimen-y-castigo">
                     <img src="assets/img/books/crime_castigo.jpeg" alt="Crimen y Castigo" class="gallery-img">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="book" data-item="rebelion-atlas">
                     <img src="assets/img/books/rebelion_atlas.jpeg" alt="La Rebelión de Atlas" class="gallery-img">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-type="book" data-item="east-of-eden">
                     <img src="assets/img/books/east_of_eden.jpeg" alt="East of Eden" class="gallery-img">
                 </div>
             </div>
@@ -258,6 +258,25 @@
             <div class="modal-body">
                 <h3 class="modal-subtitle">Responsabilidades y Logros</h3>
                 <ul class="modal-details" id="modalDetails"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Library Modal -->
+    <div class="modal-overlay" id="libraryModal">
+        <div class="modal-content library-modal-content">
+            <button class="modal-close" id="closeLibraryModal">&times;</button>
+            <div class="modal-header library-modal-header">
+                <img src="" alt="" class="library-modal-image" id="libraryModalImage">
+                <div class="modal-title-section">
+                    <h2 class="modal-company" id="libraryModalTitle"></h2>
+                    <p class="modal-role" id="libraryModalAuthor"></p>
+                    <p class="modal-date" id="libraryModalYear"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-subtitle">Sinopsis</h3>
+                <p class="library-synopsis" id="libraryModalSynopsis"></p>
             </div>
         </div>
     </div>
