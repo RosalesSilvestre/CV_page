@@ -742,6 +742,57 @@ section {
     margin-top: 1rem;
 }
 
+/* Easter Egg Styles */
+.easter-egg-trigger {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.easter-egg-trigger:hover {
+    color: var(--accent-gold);
+    transform: translateX(15px) scale(1.05);
+}
+
+.easter-egg-modal {
+    text-align: center;
+    max-width: 500px;
+}
+
+.easter-egg-content {
+    padding: 2rem;
+}
+
+.easter-egg-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--accent-gold);
+    margin: 0;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {

@@ -284,5 +284,140 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Easter Egg: Time Series Analysis click
+    const easterEggTrigger = document.querySelector('.easter-egg-trigger');
+    const easterEggModal = document.getElementById('easterEggModal');
+    const closeEasterEggBtn = document.getElementById('closeEasterEggModal');
+    const confettiCanvas = document.getElementById('confettiCanvas');
+
+    if (easterEggTrigger && easterEggModal && confettiCanvas) {
+        // Setup confetti canvas
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        confettiCanvas.style.position = 'fixed';
+        confettiCanvas.style.top = '0';
+        confettiCanvas.style.left = '0';
+        confettiCanvas.style.pointerEvents = 'none';
+        confettiCanvas.style.zIndex = '9999';
+        
+        const ctx = confettiCanvas.getContext('2d');
+        let confettiParticles = [];
+
+        // Confetti particle class
+        class ConfettiParticle {
+            constructor() {
+                this.x = Math.random() * confettiCanvas.width;
+                this.y = -10;
+                this.size = Math.random() * 5 + 3;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = (Math.random() - 0.5) * 2;
+                this.color = ['#d4af37', '#f1f5f9', '#94a3b8', '#0f172a'][Math.floor(Math.random() * 4)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * 10;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                this.speedY += 0.1; // gravity
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+
+            isOffScreen() {
+                return this.y > confettiCanvas.height || this.x < 0 || this.x > confettiCanvas.width;
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            confettiParticles = [];
+            for (let i = 0; i < 150; i++) {
+                confettiParticles.push(new ConfettiParticle());
+            }
+        }
+
+        // Animate confetti
+        function animateConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            
+            confettiParticles = confettiParticles.filter(particle => {
+                particle.update();
+                particle.draw();
+                return !particle.isOffScreen();
+            });
+
+            if (confettiParticles.length > 0) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                confettiCanvas.style.display = 'none';
+            }
+        }
+
+        // Function to trigger confetti
+        function triggerConfetti() {
+            confettiCanvas.style.display = 'block';
+            createConfetti();
+            animateConfetti();
+        }
+
+        // Function to open easter egg modal
+        function openEasterEgg() {
+            triggerConfetti();
+            easterEggModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close easter egg modal
+        function closeEasterEgg() {
+            easterEggModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add click event to Time Series Analysis
+        easterEggTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openEasterEgg();
+        });
+
+        // Close easter egg modal
+        if (closeEasterEggBtn) {
+            closeEasterEggBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeEasterEgg();
+            });
+        }
+
+        // Close on overlay click
+        easterEggModal.addEventListener('click', function(e) {
+            if (e.target === easterEggModal) {
+                closeEasterEgg();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && easterEggModal.classList.contains('active')) {
+                closeEasterEgg();
+            }
+        });
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', function() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        });
+    }
 });
 
