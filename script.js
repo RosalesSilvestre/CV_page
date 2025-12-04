@@ -228,6 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
             libraryModalYear.textContent = data.year;
             libraryModalSynopsis.textContent = data.synopsis;
 
+            // Store the current item data for Google search
+            libraryModalImage.dataset.searchQuery = `${data.title} ${data.author}`;
+
             // Show modal with animation
             libraryModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -265,6 +268,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 e.stopPropagation();
                 closeLibraryModal();
+            });
+        }
+
+        // Make library modal image clickable to search on Google
+        if (libraryModalImage) {
+            libraryModalImage.style.cursor = 'pointer';
+            libraryModalImage.title = 'Click to search on Google';
+            libraryModalImage.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const searchQuery = libraryModalImage.dataset.searchQuery || libraryModalTitle.textContent;
+                if (searchQuery) {
+                    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+                    window.open(googleSearchUrl, '_blank');
+                }
             });
         }
 
