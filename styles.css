@@ -50,14 +50,14 @@ h1, h2, h3 {
     letter-spacing: 0.05em;
 }
 
-.hero-subtitle {
+.hero-name {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 300;
     margin-bottom: 2rem;
-    color: var(--accent-subtle);
-    letter-spacing: 0.02em;
-    font-style: italic;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .hero-subtitles {
