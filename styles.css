@@ -88,6 +88,7 @@ h1, h2, h3 {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     transition: all 0.5s ease;
     filter: grayscale(20%);
+    display: block;
 }
 
 .profile-picture:hover {
@@ -95,6 +96,11 @@ h1, h2, h3 {
     border-color: var(--accent-gold);
     box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
     filter: grayscale(0%);
+}
+
+.hero-visual a {
+    display: inline-block;
+    cursor: pointer;
 }
 
 /* Section Styles */
@@ -733,6 +739,8 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
     transition: all 0.3s ease;
+    cursor: pointer;
+    display: block;
 }
 
 .library-modal-image:hover {

@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Library modal elements not found');
     } else {
         // Function to open library modal
-        function openLibraryModal(itemKey) {
+        function openLibraryModal(itemKey, itemType) {
             const data = libraryData[itemKey];
             if (!data) {
                 console.error('Library item data not found for:', itemKey);
@@ -228,8 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
             libraryModalYear.textContent = data.year;
             libraryModalSynopsis.textContent = data.synopsis;
 
-            // Store the current item data for Google search
-            libraryModalImage.dataset.searchQuery = `${data.title} ${data.author}`;
+            // Store the current item data for Google search (title + movie/book)
+            libraryModalImage.dataset.searchQuery = `${data.title} ${itemType}`;
+            libraryModalImage.dataset.itemType = itemType;
 
             // Show modal with animation
             libraryModal.classList.add('active');
@@ -254,7 +255,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const itemKey = item.getAttribute('data-item');
                 
                 if (itemType && itemKey) {
-                    openLibraryModal(itemKey);
+                    // Convert 'movie' to 'movie' and 'book' to 'book' for Google search
+                    const searchType = itemType === 'movie' ? 'movie' : 'book';
+                    openLibraryModal(itemKey, searchType);
                 }
             });
             
@@ -275,10 +278,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (libraryModalImage) {
             libraryModalImage.style.cursor = 'pointer';
             libraryModalImage.title = 'Click to search on Google';
+            
+            // Add click event directly to the image
             libraryModalImage.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                const searchQuery = libraryModalImage.dataset.searchQuery || libraryModalTitle.textContent;
+                const searchQuery = libraryModalImage.dataset.searchQuery;
                 if (searchQuery) {
                     const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
                     window.open(googleSearchUrl, '_blank');
@@ -286,9 +291,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Close library modal when clicking overlay
+        // Close library modal when clicking overlay (but not on the image or modal content)
         if (libraryModal) {
             libraryModal.addEventListener('click', function(e) {
+                // Only close if clicking directly on the overlay, not on modal content or image
                 if (e.target === libraryModal) {
                     closeLibraryModal();
                 }
